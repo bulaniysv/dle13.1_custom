@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dleplugin>
+	<name>Ротатор баннеров</name>
+	<description>Модуль позволяет создавать рекламный блоки, и запускать рекламу по указанным параметрам: GEO/OS/DEVISE/ADBLOCK</description>
+	<icon></icon>
+	<version>1.0</version>
+	<dleversion>12</dleversion>
+	<versioncompare>greater</versioncompare>
+	<upgradeurl></upgradeurl>
+	<filedelete>1</filedelete>
+	<mysqlinstall><![CDATA[INSERT INTO `{prefix}_admin_sections` (`name`, `title`, `descr`, `icon`, `allow_groups`) VALUES ('rotator', 'Ротатор баннеров', 'Модуль позволяет создавать рекламный блоки, и запускать рекламу по указанным параметрам: GEO/OS/DEVISE/ADBLOCK', '', '1')]]></mysqlinstall>
+	<mysqlupgrade><![CDATA[]]></mysqlupgrade>
+	<mysqlenable><![CDATA[]]></mysqlenable>
+	<mysqldisable><![CDATA[]]></mysqldisable>
+	<mysqldelete><![CDATA[DELETE FROM `{prefix}_admin_sections` WHERE name='rotator']]></mysqldelete>
+	<file name="engine/modules/show.full.php">
+		<operation action="before">
+			<searchcode><![CDATA[$options = news_permission( $row['access'] );]]></searchcode>
+			<replacecode><![CDATA[$GLOBALS['full_post'] = $row;]]></replacecode>
+		</operation>
+	</file>
+	<file name="engine/modules/main.php">
+		<operation action="before">
+			<searchcode><![CDATA[$tpl->compile ( 'main' );]]></searchcode>
+			<replacecode><![CDATA[if(isset($GLOBALS['full_post'])) {
+  $rotatorStops = ROOT_DIR.'/engine/modules/rotator/stop.words';
+  if(file_exists($rotatorStops)) {
+    $stopWords = explode(',', file_get_contents($rotatorStops));
+    foreach($GLOBALS['full_post'] as $k => $v) {
+      if($k == 'title') {
+        $v = trim(str_replace('  ', ' ', str_replace($stopWords, '', $v)));
+      }
+      $tpl->set ( '{'.$k.'}',  $v );
+    }
+  }
+}
+]]></replacecode>
+		</operation>
+	</file>
+</dleplugin>

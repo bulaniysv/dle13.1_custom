@@ -8,7 +8,9 @@
 			<svg><use xlink:href="#[xfvalue_icon limit='20']"></use></svg>
 		</div>
 		<div class="short-body">
-			<a href="{full-link}" class="short-title">{title}</a>
+			<div class="short-title">
+				<a href="{full-link}">{title}</a>
+			</div>
 			<i data-href="{full-link}" data-class="short-btn"><svg class="short-btn__icon"><use xlink:href="#icon-download"></use></svg> Download</i>
 		</div>
 	</div>
@@ -16,11 +18,11 @@
 [/not-aviable]
 
 [aviable=xfsearch]
-[catlist=1]
 <div class="col-12">
 	<div class="faq-short d-flex">
 		<div class="faq-short__icon">
-			<svg><use xlink:href="#[xfvalue_icon limit='20']"></use></svg>
+			[xfgiven_icon]<svg><use xlink:href="#[xfvalue_icon limit='20']"></use></svg>[/xfgiven_icon]
+			[xfgiven_logo][xfvalue_logo][/xfgiven_logo]
 		</div>
 		<div class="faq-short__body">
 			<a href="{full-link}" class="faq-short__title">{title}</a>
@@ -28,7 +30,6 @@
 		</div>
 	</div>
 </div>
-[/catlist]
 [/aviable]
 
 [aviable=search]

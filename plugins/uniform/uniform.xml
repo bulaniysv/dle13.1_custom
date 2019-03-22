@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dleplugin>
+	<name>DLE-UniForm</name>
+	<description>Универсальные AJAX-формы для DLE</description>
+	<icon></icon>
+	<version>1.4.2</version>
+	<dleversion></dleversion>
+	<filedelete>1</filedelete>
+	<versioncompare>less</versioncompare>
+	<mysqlinstall><![CDATA[]]></mysqlinstall>
+	<mysqlupgrade><![CDATA[]]></mysqlupgrade>
+	<mysqlenable><![CDATA[]]></mysqlenable>
+	<mysqldisable><![CDATA[]]></mysqldisable>
+	<mysqldelete><![CDATA[]]></mysqldelete>
+</dleplugin>

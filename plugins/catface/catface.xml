@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dleplugin>
+	<name>Catface</name>
+	<description>CatFace - SEO оптимизация категорий</description>
+	<icon></icon>
+	<version>2.3</version>
+	<dleversion>13.0</dleversion>
+	<versioncompare>greater</versioncompare>
+	<mysqlinstall><![CDATA[INSERT INTO `{prefix}_admin_sections` (`name`, `title`, `descr`, `icon`, `allow_groups`) VALUES ('catface', 'CatFace - SEO оптимизация категорий', 'Модуль позволяет прикрепить к категориям и главной странице описание и заголовок, а так же регулировать их вывод на разных страницах', 'catface.png', '1'); DROP TABLE IF EXISTS `{prefix}_category_face`; CREATE TABLE `{prefix}_category_face` (`category_id` int(11) NOT NULL, `name` varchar(255) NOT NULL, `name_pages` varchar(255) NOT NULL, `description` text NOT NULL, `description_pages` text NOT NULL, `module_placement` enum('nowhere','first_page','all_pages') NOT NULL, `show_name` enum('show','default','hide') NOT NULL, `show_description` enum('show','default','hide') NOT NULL, `name_placement` enum('first_page','all_pages') NOT NULL, `description_placement` enum('first_page','all_pages') NOT NULL, PRIMARY KEY (`category_id`)) DEFAULT CHARSET=utf8;]]></mysqlinstall>
+	<mysqlupgrade><![CDATA[]]></mysqlupgrade>
+	<mysqlenable><![CDATA[]]></mysqlenable>
+	<mysqldisable><![CDATA[]]></mysqldisable>
+	<mysqldelete><![CDATA[DELETE FROM `{prefix}_admin_sections` WHERE name='catface';DROP TABLE IF EXISTS `{prefix}_category_face`;]]></mysqldelete>
+</dleplugin>

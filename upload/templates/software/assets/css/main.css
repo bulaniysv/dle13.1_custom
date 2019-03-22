@@ -58,7 +58,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	vertical-align: baseline;
 }
 
-html {font-size: 63.5%}
+html {font-size: 63%}
 
 body {
 	font-family: 'Exo 2', sans-serif;
@@ -73,7 +73,6 @@ body {
 	background-color: #fff;
 	padding-top: 15px;
 	padding-bottom: 15px;
-	overflow: hidden;
 }
 
 .column-aside {
@@ -115,6 +114,10 @@ article ol {
 	margin-bottom: 1em;
 }
 
+article li + li {
+	margin-top: 0.6em;
+}
+
 #dle-content {
 	display: -ms-flexbox;
 	display: flex;
@@ -129,11 +132,12 @@ article ol {
 	padding-bottom: 2em
 }
 
-.faq-short__icon svg {
+.faq-short__icon svg, .faq-short__icon img {
 	width: 60px;
 	height: 60px;
-	fill: #cacaca;
 }
+
+.faq-short__icon svg {fill: #cacaca;}
 
 .category-list .whatsapp-icon:hover svg, svg.whatsapp-fill {fill: #01a659;}
 .category-list .viber-icon:hover svg, svg.viber-fill {fill: #7d519d;}
@@ -141,7 +145,17 @@ article ol {
 .category-list .telegram-icon:hover svg, svg.telegram-fill {fill: #1e9dde;}
 .category-list .messenger-icon:hover svg, svg.messenger-fill {fill: #0d72f8;}
 .category-list .hangouts-icon:hover svg, svg.hangouts-fill {fill: #18a25f;}
-.category-list .line-icon:hover svg, svg.line-fill {fill: #3ac800;}
+.category-list .line-icon:hover svg, svg.line-fill {fill: #5bb935;}
+.category-list .bbm-icon:hover svg, svg.bbm-fill {fill: #17161b;}
+.category-list .wechat-icon:hover svg, svg.wechat-fill {fill: #00c611;}
+.category-list .signal-icon:hover svg, svg.signal-fill {fill: #0091ec;}
+.category-list .snapchat-icon:hover svg, svg.snapchat-fill {fill: #eed607;}
+.category-list .kakaotalk-icon:hover svg, svg.kakaotalk-fill {fill: #43190b;}
+.category-list .imo-icon:hover svg, svg.imo-fill {fill: #094395;}
+.category-list .kik-icon:hover svg, svg.kik-fill {fill: #53ae0b;}
+.category-list .groupme-icon:hover svg, svg.groupme-fill {fill: #0daae1;}
+.category-list .discord-icon:hover svg, svg.discord-fill {fill: #82a0ff;}
+.category-list .slack-icon:hover svg, svg.slack-fill {fill: #17bfa6;}
 
 .category-list .whatsapp-icon:hover {color: #01a659;}
 .category-list .viber-icon:hover {color: #7d519d;}
@@ -149,7 +163,17 @@ article ol {
 .category-list .telegram-icon:hover {color: #1e9dde;}
 .category-list .messenger-icon:hover {color: #0d72f8;}
 .category-list .hangouts-icon:hover {color: #18a25f;}
-.category-list .line-icon:hover {color: #3ac800;}
+.category-list .line-icon:hover {color: #5bb935;}
+.category-list .bbm-icon:hover {color: #17161b;}
+.category-list .wechat-icon:hover {color: #00c611;}
+.category-list .signal-icon:hover {color: #0091ec;}
+.category-list .snapchat-icon:hover {color: #eed607;}
+.category-list .kakaotalk-icon:hover {color: #43190b;}
+.category-list .imo-icon:hover {color: #094395;}
+.category-list .kik-icon:hover {color: #53ae0b;}
+.category-list .groupme-icon:hover {color: #0daae1;}
+.category-list .discord-icon:hover {color: #82a0ff;}
+.category-list .slack-icon:hover {color: #17bfa6;}
 
 .category-list a::before {
 	content: '';
@@ -186,7 +210,37 @@ article ol {
 .hangouts-color {background-color: #18a25f;}
 
 .category-list .line-icon:hover::before,
-.line-color {background-color: #3ac800;}
+.line-color {background-color: #5bb935;}
+
+.category-list .bbm-icon:hover::before,
+.bbm-color {background-color: #17161b;}
+
+.category-list .wechat-icon:hover::before,
+.wechat-color {background-color: #00c611;}
+
+.category-list .signal-icon:hover::before,
+.signal-color {background-color: #0091ec;}
+
+.category-list .snapchat-icon:hover::before,
+.snapchat-color {background-color: #eed607;}
+
+.category-list .kakaotalk-icon:hover::before,
+.kakaotalk-color {background-color: #43190b;}
+
+.category-list .imo-icon:hover::before,
+.imo-color {background-color: #094395;}
+
+.category-list .kik-icon:hover::before,
+.kik-color {background-color: #53ae0b;}
+
+.category-list .groupme-icon:hover::before,
+.groupme-color {background-color: #0daae1;}
+
+.category-list .discord-icon:hover::before,
+.discord-color {background-color: #82a0ff;}
+
+.category-list .slack-icon:hover::before,
+.slack-color {background-color: #17bfa6;}
 
 .download-color {background-color: #01a659;}
 
@@ -273,6 +327,7 @@ article ol {
 	position: relative;
 	padding-top: 2em;
 	margin-top: 2em;
+	overflow: hidden;
 }
 
 .aside-box::before {
@@ -287,7 +342,10 @@ article ol {
 
 .vote__title {font-weight: 600;}
 
-.header {margin-bottom: 1.5em;}
+.header {
+	margin-bottom: 1.5em;
+	overflow: hidden;
+}
 
 .main-menu {
 	position: relative;
@@ -339,6 +397,25 @@ article ol {
 }
 
 .short-title {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	min-height: 56px;
+	margin-top: 5px;
+}
+
+.short-title--main {
+	min-height: auto;
+	margin-top: 0.5em;
+}
+
+.short-title a {
 	color: #fff;
 	font-size: 2rem;
 	text-decoration: none;
@@ -371,6 +448,7 @@ article ol {
 
 .short-body {
 	margin-top: 1em;
+	text-align: center;
 }
 
 .main-short--whatsapp {background-color: #01a659;}
@@ -379,7 +457,8 @@ article ol {
 .main-short--telegram {background-color: #1e9dde;}
 .main-short--messenger {background-color: #0d72f8;}
 .main-short--hangouts {background-color: #18a25f;}
-.main-short--line {background-color: #3ac800;}
+.main-short--line {background-color: #5bb935;}
+.main-short--bbm {background-color: #17161b;}
 
 .bottom-text {
 	position: relative;
@@ -479,13 +558,28 @@ article ol {
 	margin-bottom: 1em;
 }
 
+.title-box h1 {
+	margin-bottom: 0;
+}
+
 .poster-box svg {
 	max-width: 150px;
 	max-height: 150px;
 }
 
-.poster-box {margin-bottom: 1.5em;}
 .poster-box img {max-width: 200px;}
+
+.as-box {
+	margin-bottom: 1em;
+}
+
+.as-type-1 {
+	width: 360px;
+	height: 300px;
+}
+
+#social_share {margin-bottom: 1em;}
+
 .tab-contain {
 	margin-bottom: 2em;
 	padding-bottom: 1em;
@@ -894,3 +988,48 @@ article ol {
 	border-top: 2px dashed #eee;
 	padding-top: 15px;
 }
+
+.highslide {
+	display: inline-block;
+	margin-top: 10px;
+}
+
+.navigation {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 1em;
+}
+
+.pages {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.pages span, .pages a {
+	display: inline-block;
+	text-decoration: none;
+	background-color: #0092ff;
+	color: #fff;
+	min-width: 25px;
+	border-radius: 2px;
+}
+
+.pages a {
+	background-color: transparent;
+	color: #000;
+}
+
+.pages a:hover {background-color: rgba(0, 146, 255, 0.2);}
+
+.page-nav {
+	display: inline-block;
+	margin: 0 10px;
+	font-size: 24px;
+	vertical-align: text-top;
+	line-height: 0.8;
+}
+
+.navigation a {text-decoration: none;}
+
+
+.redirect-modal { position: fixed; z-index: 9999999; top: 50%; left: 50%; width: 300px; height: 200px; background: #fff; }

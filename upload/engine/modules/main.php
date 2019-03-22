@@ -666,6 +666,8 @@ $tpl->global_clear();
 
 $db->close();
 
+echo "\n<!-- DataLife Engine Copyright SoftNews Media Group (http://dle-news.ru) -->\r\n";
+
 GzipOut();
 
 ?>

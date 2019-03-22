@@ -25,7 +25,7 @@
 		<div class="wrap">
 			<div class="title">Site temporarily disabled</div>
 			<div class="reason">{reason}</div>
-			<p class="copyright">Copyright © 2018 <a href="https://Appstotalk.com/" target="_blank" rel="nofollow">Appstotalk.com</a> All Rights Reserved.</p>
+			<p class="copyright">Copyright © 2019 <a href="https://Appstotalk.com/" target="_blank" rel="nofollow">AppstoTalk</a> All Rights Reserved.</p>
 		</div>
 	</div>
 </body>

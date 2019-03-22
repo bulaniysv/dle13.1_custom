@@ -1249,6 +1249,7 @@ $metatags = <<<HTML
 <title>{$metatags['title']}</title>
 <meta name="description" content="{$metatags['description']}">
 <meta name="keywords" content="{$metatags['keywords']}">{$disable_index}
+<meta name="generator" content="DataLife Engine (http://dle-news.ru)">
 {$s_meta}<link rel="search" type="application/opensearchdescription+xml" href="{$PHP_SELF}?do=opensearch" title="{$config['home_title']}">
 HTML;
 

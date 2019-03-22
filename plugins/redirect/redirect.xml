@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dleplugin>
+	<name>Redirect with timeout</name>
+	<description>Страница редиректа с таймаутом</description>
+	<icon>engine/skins/images/redirect_timeout.png</icon>
+	<version>3.1</version>
+	<dleversion>12</dleversion>
+	<versioncompare>greater</versioncompare>
+	<upgradeurl></upgradeurl>
+	<filedelete>0</filedelete>
+	<mysqlinstall><![CDATA[INSERT INTO `{prefix}_admin_sections` (`id`, `name`, `title`, `descr`, `icon`, `allow_groups`) VALUES (NULL, 'timeout', 'Redirect with timeout', 'Страница редиректа с таймаутом', 'redirect_timeout.png', '');]]></mysqlinstall>
+	<mysqlupgrade><![CDATA[]]></mysqlupgrade>
+	<mysqlenable><![CDATA[]]></mysqlenable>
+	<mysqldisable><![CDATA[]]></mysqldisable>
+	<mysqldelete><![CDATA[DELETE FROM `{prefix}_admin_sections` WHERE name = "timeout"]]></mysqldelete>
+	<file name="engine/modules/show.full.php">
+		<operation action="replace">
+			<searchcode><![CDATA[$xfieldsdata = xfieldsdataload( $row['xfields'] );
+
+			foreach ( $xfields as $value ) {]]></searchcode>
+			<replacecode><![CDATA[$xfieldsdata = xfieldsdataload( $row['xfields'] );
+$redirect_config = @unserialize(@file_get_contents('redirect_config.cfg'));
+$ubarImage = $xfieldsdata[$redirect_config['ubarImg']];
+if(preg_match('#src=[\'"]([^\'"]*)#i', $ubarImage, $matches)){
+	$ubarImage = $matches[1];
+}
+if(strpos($ubarImage,'http://') === false && strpos($ubarImage,'https://') === false){
+	if($ubarImage[0] == '/'){
+		$ubarImage = substr($ubarImage, 1);
+	}
+	//$ubarImage = $config['http_home_url'].'uploads/posts/'.$ubarImage;
+  $ubarImage = $config['http_home_url'].$ubarImage;
+}
+$dataKey = array();
+//print_r($redirect_config);
+foreach($redirect_config['fields'] as $key => $val){
+	if(isset($val['transmit'])){
+		$dataKey[] = $key;
+	}
+}
+
+foreach ( $xfields as $value ) {
+	$tmp = '';
+	preg_match("#\[xfvalue_{$value[0]}@tmp=(.*)\.tpl#m", $tpl->copy_template, $matches); 
+	if(count($matches) > 0){
+		$tmp = $matches[1] . '.tpl';
+		$tpl->copy_template = str_replace( "{$value[0]}@tmp={$tmp}", "{$value[0]}", $tpl->copy_template );
+	}
+					
+	if(($redirect_config['filename'] || $redirect_config['url']) && $redirect_config['fields'][$value[0]]['value'] && $xfieldsdata[$value[0]]) {
+		if(strpos( $xfieldsdata[$value[0]], "[attachment=" ) !== false){
+			preg_match('#\[attachment=(\d+):#',$xfieldsdata[$value[0]],$matchesId);
+			$ulrFileDwnload = $config['http_home_url']."engine/download.php?id=".$matchesId[1];
+		}else{
+			$ulrFileDwnload = $xfieldsdata[$value[0]];
+		}
+        $ulrFileDwnload = html_entity_decode($ulrFileDwnload);
+        if($redirect_config['ubar']){						
+			$ulrFileDwnload = getUbarLink($row['title'], '', $ulrFileDwnload, $ubarImage,'','',$redirect_config['ubarId']);
+		}
+		if((strpos($ulrFileDwnload,'http://') === false) && strpos($ulrFileDwnload,'https://') === false){
+			$ulrFileDwnload = 'http://' . $ulrFileDwnload;
+		}
+		
+		if(!$redirect_config['off']){
+			$hash = $ulrFileDwnload."%%%".$row['title']."%%%".$tmp;
+			foreach($dataKey as $val){
+				if(preg_match('#src=[\'"]([^\'"]*)#i', $xfieldsdata[$val], $matches)){
+					$xfieldsdata[$val] = $matches[1];
+				}
+				$hash .= "%%%".$val.'='.$xfieldsdata[$val];
+			}
+			$hash .= '%%%views='.$row['news_read'];
+			$ulrFileDwnload = ($redirect_config['filename'] ? '/'.$redirect_config['filename'] : $redirect_config['url']).'?hash='.base64_encode($hash);
+		}
+							
+		$xfieldsdata[$value[0]] = $ulrFileDwnload;
+	}]]></replacecode>
+		</operation>
+		<operation action="before">
+			<searchcode><![CDATA[if ( preg_match( "#\\[xfvalue_{$preg_safe_name} limit=['\"](.+?)['\"]\\]#i", $tpl->copy_template, $matches ) ) {]]></searchcode>
+			<replacecode><![CDATA[if(preg_match_all("/\[ubar\-link\-([^\]]+)\]/si", $tpl->copy_template, $matches)) {
+	foreach($matches[1] as $m) {					
+		$old = $m;
+		$tmp = '';
+		if(preg_match("#.*@tmp=(.*)\.tpl#", $m, $matchesTpl)){
+			$tmp = $matchesTpl[1] . '.tpl';
+			$m = str_replace( "@tmp={$tmp}", "", $m );						
+		}
+								
+		$m = getUbarLink($row['title'], '', $m, $ubarImage,'','',$redirect_config['ubarId']);
+		
+		if(!$redirect_config['off']){
+			$m .= "%%%".$row['title']."%%%".$tmp;
+			foreach($dataKey as $val){
+				if(preg_match('#src=[\'"]([^\'"]*)#i', $xfieldsdata[$val], $matchesSrc)){
+					$xfieldsdata[$val] = $matchesSrc[1];
+				}
+				$m .= "%%%".$val.'='.$xfieldsdata[$val];
+			}
+							
+			$m = ($redirect_config['filename'] ? '/'.$redirect_config['filename'] : $redirect_config['url']).'?hash='.base64_encode($m);
+		}
+
+		$tpl->copy_template = str_replace( "[ubar-link-".$old."]", $m, $tpl->copy_template );
+	}
+}
+
+if(preg_match_all("/\[redirect\-link\-([^\]]+)\]/si", $tpl->copy_template, $matches)) {
+	foreach($matches[1] as $m) {
+		$old = $m;
+		$tmp = '';
+		if(preg_match("#.*@tmp=(.*)\.tpl#", $m, $matchesTpl)){
+			$tmp = $matchesTpl[1] . '.tpl';
+			$m = str_replace( "@tmp={$tmp}", "", $m );						
+		}
+		
+		if($redirect_config['ubar']){
+			$m = getUbarLink($row['title'], '', $m, $ubarImage,'','',$redirect_config['ubarId']);
+		}
+		
+		if(!$redirect_config['off']){
+			$m .= "%%%".$row['title']."%%%".$tmp;
+			foreach($dataKey as $val){
+				if(preg_match('#src=[\'"]([^\'"]*)#i', $xfieldsdata[$val], $matchesSrc)){
+					$xfieldsdata[$val] = $matchesSrc[1];
+				}
+				$m .= "%%%".$val.'='.$xfieldsdata[$val];
+			}
+							
+			$m = ($redirect_config['filename'] ? '/'.$redirect_config['filename'] : $redirect_config['url']).'?hash='.base64_encode($m);
+		}
+
+		$tpl->copy_template = str_replace( "[redirect-link-".$old."]", $m, $tpl->copy_template );
+	}
+}]]></replacecode>
+		</operation>
+		<operation action="after">
+			<searchcode><![CDATA[$tpl->set( '{full-story}', $row['full_story'] );]]></searchcode>
+			<replacecode><![CDATA[$modalredirect = '';
+$mf = TEMPLATE_DIR.'/redirect_modal.tpl';
+if($redirect_config['modal'] && file_exists($mf)) {
+  $modalredirect = file_get_contents($mf);
+  $protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://';
+  $modalredirect = '<div id="redirect-modal" style="display:none" class="redirect-modal">'.str_replace(
+    array('{timer}', '{link}'), 
+    array((int)$redirect_config['modal_time'], $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']), 
+    $modalredirect).'</div><script src="/engine/modules/redirect/scripts.js"></script>';
+}
+$tpl->set( '{redirect_modal}', $modalredirect );]]></replacecode>
+		</operation>
+	</file>
+	<file name="engine/modules/functions.php">
+		<operation action="before">
+			<searchcode><![CDATA[function dle_session( $sid = false ) {]]></searchcode>
+			<replacecode><![CDATA[function getUbarLink($title, $description, $file, $poster, $size = '', $category = '', $id = '1') {
+    $params = 'title='.urlencode($title).'&description='.urlencode($description).'&poster='.$poster.'&file='.$file.'&size='.$size.'&category='.urlencode($category);
+    return 'http://ubar-pro.ru/download/'.$id.'/?in='.base64_encode(urlencode($params));
+}]]></replacecode>
+		</operation>
+	</file>
+	<file name="engine/engine.php">
+		<operation action="after">
+			<searchcode><![CDATA[	case "feedback" :
+		include (DLEPlugins::Check(ENGINE_DIR . '/modules/feedback.php'));
+		break;]]></searchcode>
+			<replacecode><![CDATA[    case "redirect" :
+        include ENGINE_DIR . '/modules/redirect.php';
+        break;]]></replacecode>
+		</operation>
+	</file>
+</dleplugin>

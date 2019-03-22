@@ -5,7 +5,10 @@
 			<div class="title-box__rating">{rating}</div>
 		</div>
 		<div class="anchor-links"></div>
+
+		<div class="as-box as-type-2" id="as2"></div>
 		{full-story}
+
 		<div id="social_share">
 			<a class="fb" data-type="fb">Facebook</a>
 			<a class="tw" data-type="tw">Twitter</a>
@@ -14,6 +17,7 @@
 			<a class="tg" data-type="tg">Telegram</a>
 			<script async src="https://cdn.itense.group/share/social_share.js"></script>
 		</div>
+		<div class="as-box as-type-2" id="as4"></div>
 	</article>
 	<div id="disqus_thread"></div>
 	<script>

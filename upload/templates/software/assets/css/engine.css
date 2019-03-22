@@ -785,7 +785,8 @@ table.xfields {
 }
 
 .xfieldimagegallery {
-	margin: 0;
+	margin-right: -4px;
+	margin-left: -4px;
 	padding: 0;
 	list-style: none;
 	clear: both;
@@ -800,10 +801,9 @@ table.xfields {
 }
 
 .xfieldimagegallery li img {
-	margin-right: 7px;
-	margin-bottom: 4px;
+	margin: 4px;
 	border: 4px solid #fff;
-	max-width: 270px;
+	max-width: 269px;
 	box-shadow: 0px 0px 1px rgba(0,0,0,0.4);
 }
 

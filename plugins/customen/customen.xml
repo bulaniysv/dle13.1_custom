@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dleplugin>
+	<name>Custom Engine</name>
+	<description>Custom Engine — кастомизация исходных файлов CMS DLE</description>
+	<icon></icon>
+	<version>1.1</version>
+	<dleversion></dleversion>
+	<versioncompare>less</versioncompare>
+	<upgradeurl></upgradeurl>
+	<filedelete>0</filedelete>
+	<mysqlinstall><![CDATA[INSERT INTO `{prefix}_admin_sections` (`name`, `title`, `descr`, `icon`, `allow_groups`) VALUES ('customen', 'Custom Engine — кастомизация исходников DLE', 'Custom Engine — кастомизация исходных файлов CMS DLE', '', '1')]]></mysqlinstall>
+	<mysqlupgrade><![CDATA[]]></mysqlupgrade>
+	<mysqlenable><![CDATA[]]></mysqlenable>
+	<mysqldisable><![CDATA[]]></mysqldisable>
+	<mysqldelete><![CDATA[DELETE FROM `{prefix}_admin_sections` WHERE name='customen']]></mysqldelete>
+	<file name="engine/modules/main.php">
+		<operation action="after">
+			<searchcode><![CDATA[$tpl->set ( '{speedbar}', $tpl->result['speedbar'] );]]></searchcode>
+			<replacecode><![CDATA[$tpl->set('{year}',date('Y', time()));
+$tpl->set( '{this_uri}', $_SERVER['REQUEST_URI'] );]]></replacecode>
+		</operation>
+	</file>
+	<file name="engine/modules/show.full.php">
+		<operation action="after">
+			<searchcode><![CDATA[if ($row['metatitle']) $metatags['header_title'] = $row['metatitle'];]]></searchcode>
+			<replacecode><![CDATA[$og_logo = xfieldsdataload( $row['xfields'] );]]></replacecode>
+		</operation>
+		<operation action="after">
+			<searchcode><![CDATA[$social_tags['title'] = str_replace("&amp;amp;", "&amp;", htmlspecialchars( $row['title'], ENT_QUOTES, $config['charset'] ) );]]></searchcode>
+			<replacecode><![CDATA[$social_tags['description'] = str_replace("&amp;amp;", "&amp;", htmlspecialchars( $row['descr'], ENT_QUOTES, $config['charset'] ) );]]></replacecode>
+		</operation>
+		<operation action="after">
+			<searchcode><![CDATA[$social_tags['url'] = $full_link;]]></searchcode>
+			<replacecode><![CDATA[$social_tags['image'] = $config['http_home_url'] . "uploads/posts/" . $og_logo['fullimg'];]]></replacecode>
+		</operation>
+		<operation action="replace">
+			<searchcode><![CDATA[if ( count($images) ) $social_tags['image'] = $images[0];]]></searchcode>
+			<replacecode><![CDATA[if ( count($images) AND !empty($og_logo) ) $social_tags['image'] = $images[0];]]></replacecode>
+		</operation>
+	</file>
+	<file name="engine/modules/show.short.php">
+		<operation action="before">
+			<searchcode><![CDATA[$tpl->set( '{short-story}', $row['short_story'] );]]></searchcode>
+			<replacecode><![CDATA[$social_tags['site_name'] = $config['home_title'];
+$social_tags['type'] = 'article';
+$social_tags['title'] = str_replace("&amp;amp;", "&amp;", htmlspecialchars( $row['title'], ENT_QUOTES, $config['charset'] ) );
+$social_tags['description'] = str_replace("&amp;amp;", "&amp;", htmlspecialchars( $cat_info[$row['category']]['descr'], ENT_QUOTES, $config['charset'] ) );
+$social_tags['url'] = $config['http_home_url'] . get_url( $row['category'] ) . "/";
+$social_tags['image'] = $cat_info[$row['category']]['icon'];]]></replacecode>
+		</operation>
+	</file>
+	<file name="engine/classes/templates.class.php">
+		<operation action="before">
+			<searchcode><![CDATA[$this->copy_template = $this->template;
+	
+$this->template_parse_time += $this->get_real_time() - $time_before;]]></searchcode>
+			<replacecode><![CDATA[	if( strpos( $this->template, "{request=" ) !== false or strpos( $this->template, "[request=" ) !== false ) {		
+		preg_match_all("#[\\{\\[]request=['\"](.+?)['\"]#is",$this->template,$matchs,PREG_PATTERN_ORDER);
+		$matchs = ((isset($matchs[1]) and is_array($matchs[1]))?$matchs[1]:array());
+		$matchs = array_unique($matchs);
+		foreach($matchs as $match){
+			$xx = explode('=',$match);
+			$vmatch = array(array_shift($xx),implode('=',$xx));
+			$amatch = explode('->',$vmatch[0]);
+			$value = $_REQUEST;
+			foreach($amatch as $imatch)
+				$value = (($value and isset($value[$imatch]))?$value[$imatch]:false);
+			
+			if((isset($vmatch[1]) and (is_array($value) and in_array($vmatch[1],$value) or $vmatch[1]==$value)) or (!isset($vmatch[1]) and $value)){
+				$this->template = preg_replace ( "#\\{request=['\"]{$vmatch[0]}['\"]\\}#is", (is_array($value)?'array':$value), $this->template );
+				$this->template = preg_replace ( "#\\[request=['\"]{$vmatch[0]}['\"]\\](.+?)\\[/request\\]#is", '\\1', $this->template );
+				$this->template = preg_replace ( "#\\[request=['\"]{$vmatch[0]}={$vmatch[1]}['\"]\\](.+?)\\[/request\\]#is", '\\1', $this->template );
+			} else {
+				$this->template = preg_replace ( "#\\{request=['\"]{$vmatch[0]}['\"]\\}#is", '', $this->template );
+				$this->template = preg_replace ( "#\\[request=['\"]{$vmatch[0]}['\"]\\](.+?)\\[/request\\]#is", '', $this->template );
+				$this->template = preg_replace ( "#\\[request=['\"]{$vmatch[0]}={$vmatch[1]}['\"]\\](.+?)\\[/request\\]#is", '', $this->template );
+			}
+		}
+	}
+	if( strpos( $this->template, "{request}" ) !== false) {
+		$this->template = str_replace('{request}', var_export($_REQUEST,true), $this->template );
+	}]]></replacecode>
+		</operation>
+	</file>
+	<file name="engine/modules/search.php">
+		<operation action="replace">
+			<searchcode><![CDATA[<td class="search">
+      <div style="margin:10px;">
+                <input type="text" name="story" id="searchinput" value="$findstory" class="textin" style="width:250px" onchange="document.getElementById('result_from').value = 1" /><br /><br />
+                <input type="button" class="bbcodes" name="dosearch" id="dosearch" value="{$lang['s_fstart']}" onclick="javascript:list_submit(-1); return false;" />
+                {$link_full_search}
+            </div>
+
+        </td>]]></searchcode>
+			<replacecode><![CDATA[<td class="search-form">
+  <input type="text" name="story" id="searchinput" value="$findstory" class="search-form__input" onchange="document.getElementById('result_from').value = 1" />
+  <input type="button" class="bbcodes" name="dosearch" id="dosearch" value="{$lang['s_fstart']}" onclick="javascript:list_submit(-1); return false;" />
+ </td>]]></replacecode>
+		</operation>
+	</file>
+	<file name="engine/ajax/search.php">
+		<operation action="replace">
+			<searchcode><![CDATA[?do=search&amp;mode=advanced&amp;subaction=search&amp;story=]]></searchcode>
+			<replacecode><![CDATA[?do=search&amp;subaction=search&amp;story=]]></replacecode>
+		</operation>
+	</file>
+	<file name="engine/inc/xfields.php">
+		<operation action="before">
+			<searchcode><![CDATA[}
+			
+			$newpostedxfields[$value[0]] = str_ireplace( "{title", "&#123;title", $newpostedxfields[$value[0]] );]]></searchcode>
+			<replacecode><![CDATA[$newpostedxfields[$value[0]] = str_replace('&amp;', '&', $newpostedxfields[$value[0]]);]]></replacecode>
+		</operation>
+	</file>
+</dleplugin>

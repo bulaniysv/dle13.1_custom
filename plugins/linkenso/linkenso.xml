@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dleplugin>
+	<name>LinkEnso</name>
+	<description>Модуль позволяет создать на сайте кольцевую перелинковку новостей с учетом их тематики</description>
+	<icon></icon>
+	<version>2.3</version>
+	<dleversion>12</dleversion>
+	<versioncompare>greater</versioncompare>
+	<upgradeurl></upgradeurl>
+	<filedelete>1</filedelete>
+	<mysqlinstall><![CDATA[INSERT INTO `{prefix}_admin_sections` (`name`, `title`, `descr`, `icon`, `allow_groups`) VALUES ('linkenso', 'LinkEnso - модуль для организации кольцевой прелинковки', 'Модуль позволяет создать на сайте кольцевую перелинковку новостей с учетом их тематики', 'linkenso.png', '1')]]></mysqlinstall>
+	<mysqlupgrade><![CDATA[]]></mysqlupgrade>
+	<mysqlenable><![CDATA[]]></mysqlenable>
+	<mysqldisable><![CDATA[]]></mysqldisable>
+	<mysqldelete><![CDATA[DELETE FROM `{prefix}_admin_sections` WHERE name='linkenso']]></mysqldelete>
+</dleplugin>

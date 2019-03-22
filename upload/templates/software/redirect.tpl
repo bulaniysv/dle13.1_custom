@@ -33,7 +33,12 @@
 </div>
 <div class="col-sm-4">
 	<div class="poster-box">
-			<svg class="poster-box__{icon}"><use xlink:href="#{icon}"></use></svg>
+			[not-empty_icon]
+				<svg class="{icon}-fill"><use xlink:href="#{icon}"></use></svg>
+			[/not-empty_icon]
+			[not-empty_logo]
+				<img src="{logo}" alt="{title}">
+			[/not-empty_logo]
 		</div>
 </div>
 <div class="col-md-8 col-sm-12">
@@ -75,11 +80,11 @@
 		</div>
 		[/banner_redirect]-->
 		<div class="loading"><img src="/uploads/loading.gif" alt=""></div>
-		Уважаемый посетитель, пожалуйста, не покидайте страницу,
-		<div>загрузка <em class="file-title">{title}</em> начнется через:</div>
+		Dear guest, please don't leave the page,<br>
+		<div><em class="file-title">{title}</em> will start downloading in</div>
 		<div class="timer-box">
 			<i class="fa fa-clock-o" aria-hidden="true"></i> <span id="timer">{timeout}</span>
-			<span class="seconds">секунд</span>
+			<span class="seconds">seconds</span>
 		</div>
 	</div>
 </div>
@@ -96,14 +101,14 @@
 		if(delay <= 0)
 		{
 			clearInterval(interval);
-			$(".loading").html('<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Загрузка начнется автоматически...');
+			$(".loading").html('<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> The download of the file will start automatically ...');
 			$(".loading img").remove();
-			$("#timer").html("Готово!");
+			$("#timer").html("loading...");
 			$(".timer .seconds").remove();
 			document.location.href = 
 			ADBLOCKER_DETECTED
-			? "https://downloads.sourceforge.net/project/openofficeorg.mirror/4.1.5/binaries/ru/Apache_OpenOffice_4.1.5_Win_x86_install_ru.exe?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fopenofficeorg.mirror%2Ffiles%2F4.1.5%2Fbinaries%2Fru%2FApache_OpenOffice_4.1.5_Win_x86_install_ru.exe%2Fdownload&ts=1537274213"
-			: "https://server-sql.biz/go.php?sid=1&deeplink=https://downloads.sourceforge.net/project/openofficeorg.mirror/4.1.5/binaries/ru/Apache_OpenOffice_4.1.5_Win_x86_install_ru.exe?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fopenofficeorg.mirror%2Ffiles%2F4.1.5%2Fbinaries%2Fru%2FApache_OpenOffice_4.1.5_Win_x86_install_ru.exe%2Fdownload&ts=1537274213";
+			? "{url}"
+			: "{url}";
 		}
 	}, 1000);
 
