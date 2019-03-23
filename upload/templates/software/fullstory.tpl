@@ -5,7 +5,7 @@
 			<div class="label-free">Free</div>
 		</div>
 		<div class="poster-box d-flex flex-wrap justify-content-between">
-			<svg class="[xfvalue_icon limit='20']-fill"><use xlink:href="#[xfvalue_icon limit='20']"></use></svg>
+			<img src="[xfvalue_image_url_logo]" alt="{title}">
 			<div class="as-box as-type-1" id="as1"></div>
 		</div>
 		<div class="tab-contain">

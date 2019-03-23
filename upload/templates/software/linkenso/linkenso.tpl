@@ -1,1 +1,0 @@
-<li><svg class="linkenso-icon"><use xlink:href="#icon-{image}"></use></svg> {link}</li>

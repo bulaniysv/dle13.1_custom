@@ -2,7 +2,7 @@
 <div class="col-lg-4 col-md-6">
 	<div class="main-short main-short--[xfvalue_icon limit='20']">
 		<div class="main-short__os">
-			<svg><use xlink:href="#icon-[xfvalue_os]"></use></svg>
+			<img src="[xfvalue_image_url_logo]" alt="{title}">
 		</div>
 		<div class="main-short__icon">
 			<svg><use xlink:href="#[xfvalue_icon limit='20']"></use></svg>
@@ -21,8 +21,7 @@
 <div class="col-12">
 	<div class="faq-short d-flex">
 		<div class="faq-short__icon">
-			[xfgiven_icon]<svg><use xlink:href="#[xfvalue_icon limit='20']"></use></svg>[/xfgiven_icon]
-			[xfgiven_logo][xfvalue_logo][/xfgiven_logo]
+			<img src="[xfvalue_image_url_logo]" alt="{title}">
 		</div>
 		<div class="faq-short__body">
 			<a href="{full-link}" class="faq-short__title">{title}</a>

@@ -78,7 +78,7 @@
 								<div class="col-lg-4 col-md-6">
 									<div class="main-short main-short--telegram">
 										<div class="main-short__icon">
-											<svg><use xlink:href="#telegram"></use></svg>
+											<img src="#" alt="">
 										</div>
 										<div class="short-body">
 											<div class="short-title short-title--main">
@@ -91,7 +91,7 @@
 								<div class="col-lg-4 col-md-6">
 									<div class="main-short main-short--whatsapp">
 										<div class="main-short__icon">
-											<svg><use xlink:href="#whatsapp"></use></svg>
+											<img src="#" alt="">
 										</div>
 										<div class="short-body">
 											<div class="short-title short-title--main">
@@ -104,7 +104,7 @@
 								<div class="col-lg-4 col-md-6">
 									<div class="main-short main-short--viber">
 										<div class="main-short__icon">
-											<svg><use xlink:href="#viber"></use></svg>
+											<img src="#" alt="">
 										</div>
 										<div class="short-body">
 											<div class="short-title short-title--main">
@@ -117,7 +117,7 @@
 								<div class="col-lg-4 col-md-6">
 									<div class="main-short main-short--skype">
 										<div class="main-short__icon">
-											<svg><use xlink:href="#skype"></use></svg>
+											<img src="#" alt="">
 										</div>
 										<div class="short-body">
 											<div class="short-title short-title--main">
@@ -130,7 +130,7 @@
 								<div class="col-lg-4 col-md-6">
 									<div class="main-short main-short--hangouts">
 										<div class="main-short__icon">
-											<svg><use xlink:href="#hangouts"></use></svg>
+											<img src="#" alt="">
 										</div>
 										<div class="short-body">
 											<div class="short-title short-title--main">
@@ -143,7 +143,7 @@
                                <div class="col-lg-4 col-md-6">
 									<div class="main-short main-short--bbm">
 										<div class="main-short__icon">
-											<svg><use xlink:href="#bbm"></use></svg>
+											<img src="#" alt="">
 										</div>
 										<div class="short-body">
 											<div class="short-title short-title--main">
@@ -156,7 +156,7 @@
 								<div class="col-lg-4 col-md-6">
 									<div class="main-short main-short--line">
 										<div class="main-short__icon">
-											<svg><use xlink:href="#line"></use></svg>
+											<img src="#" alt="">
 										</div>
 										<div class="short-body">
 											<div class="short-title short-title--main">

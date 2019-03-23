@@ -15,7 +15,7 @@
 				<td>x-32 bit, x-64 bit</td>
 				<td>.exe</td>
 				<td>
-					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="[xfvalue_icon limit='20']-color redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
+					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
 				</td>
 			</tr>
 			<tr>
@@ -23,7 +23,7 @@
 				<td>x-32 bit, x-64 bit</td>
 				<td>.exe</td>
 				<td>
-					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="[xfvalue_icon limit='20']-color redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
+					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
 				</td>
 			</tr>
 			<tr>
@@ -31,7 +31,7 @@
 				<td>x-32 bit, x-64 bit</td>
 				<td>.exe</td>
 				<td>
-					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="[xfvalue_icon limit='20']-color redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
+					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
 				</td>
 			</tr>
 			{*<tr>
@@ -39,7 +39,7 @@
 				<td>x-32 bit, x-64 bit</td>
 				<td>.exe</td>
 				<td>
-					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="[xfvalue_icon limit='20']-color redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
+					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
 				</td>
 			</tr>*}
 		</tbody>
@@ -63,7 +63,7 @@
 				<td>64-bit</td>
 				<td>.dmg</td>
 				<td>
-					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="[xfvalue_icon limit='20']-color redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
+					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
 				</td>
 			</tr>
 		</tbody>
@@ -87,7 +87,7 @@
 				<td>x86, x64, ARM, ARM64</td>
 				<td>.xap</td>
 				<td>
-					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="[xfvalue_icon limit='20']-color redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
+					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
 				</td>
 			</tr>
 		</tbody>
@@ -111,7 +111,7 @@
 				<td>Requires iOS 8.0 or later</td>
 				<td>.ipa</td>
 				<td>
-					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="[xfvalue_icon limit='20']-color redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
+					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
 				</td>
 			</tr>
 		</tbody>
@@ -136,7 +136,7 @@
 				<td>Varies with device</td>
 				<td>.apk</td>
 				<td>
-					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="[xfvalue_icon limit='20']-color redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
+					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
 				</td>
 			</tr>
 		</tbody>
@@ -160,7 +160,7 @@
 				<td>x-32 bit, x-64 bit</td>
 				<td>.deb</td>
 				<td>
-					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="[xfvalue_icon limit='20']-color redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
+					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
 				</td>
 			</tr>
 		</tbody>
@@ -186,7 +186,7 @@
                 <td>Varies with device</td>
 				<td>.apk</td>
 				<td>
-					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="[xfvalue_icon limit='20']-color redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
+					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
 				</td>
 			</tr>
 		</tbody>
@@ -197,7 +197,7 @@
                 <td>Requires iOS 8.0 or later</td>
 				<td>.ipa</td>
 				<td>
-					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="[xfvalue_icon limit='20']-color redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
+					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
 				</td>
 			</tr>
 		</tbody>
@@ -219,7 +219,7 @@
 				<td>{title}</td>
 				<td>Google Chrome</td>
 				<td>
-					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="[xfvalue_icon limit='20']-color redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Install</span></a>
+					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Install</span></a>
 				</td>
 			</tr>
 		</tbody>
@@ -243,7 +243,7 @@
 				<td>Windows</td>
                 <td>.exe</td>
 				<td>
-					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="[xfvalue_icon limit='20']-color redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
+					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
 				</td>
 			</tr>
 		</tbody>
@@ -253,7 +253,7 @@
 				<td>Android</td>
                 <td>.apk</td>
 				<td>
-					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="[xfvalue_icon limit='20']-color redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
+					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
 				</td>
 			</tr>
 		</tbody> 
@@ -263,7 +263,7 @@
 				<td>macOS</td>
                 <td>.dmg</td>
 				<td>
-					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="[xfvalue_icon limit='20']-color redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
+					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
 				</td>
 			</tr>
 		</tbody>
@@ -273,7 +273,7 @@
 				<td>iOS</td>
                 <td>.ipa</td>
 				<td>
-					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="[xfvalue_icon limit='20']-color redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
+					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
 				</td>
 			</tr>
 		</tbody>
@@ -283,7 +283,7 @@
 				<td>Windows Phone</td>
                 <td>.xap</td>
 				<td>
-					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="[xfvalue_icon limit='20']-color redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
+					<a href="[xfvalue_download]" target="_blank" rel="nofollow" class="redirect-modal-start"><svg class="download-btn"><use xlink:href="#icon-download"></use></svg> <span>Download</span></a>
 				</td>
 			</tr>
 		</tbody>
